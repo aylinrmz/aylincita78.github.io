@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Amor</title>
+    <style>
+        :root {
+            --color-sobre: #d13c3c;
+            --color-papel: #ffffff;
+            --color-corazon: #ff0000;
+            --ancho-sobre: 400px;
+            --alto-sobre: 280px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec;
+            margin: 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .contenedor-sobre {
+            position: relative;
+            width: var(--ancho-sobre);
+            height: var(--alto-sobre);
+            cursor: pointer;
+        }
+
+        /* Ajuste de la hoja: altura reducida para que el texto corto se vea centrado */
+        .carta {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            width: calc(var(--ancho-sobre) - 40px);
+            height: 260px; /* Altura ajustada al nuevo texto más corto */
+            background: var(--color-papel);
+            padding: 30px 25px;
+            box-sizing: border-box;
+            transition: transform 0.8s ease-in-out;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carta p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            text-align: center;
+        }
+
+        .sobre {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-sobre);
+            z-index: 2;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .tapa {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: calc(var(--ancho-sobre) / 2) solid transparent;
+            border-right: calc(var(--ancho-sobre) / 2) solid transparent;
+            border-top: 150px solid var(--color-sobre);
+            z-index: 4;
+            transform-origin: top;
+            transition: transform 0.5s 0.2s;
+        }
+
+        /* Texto exterior: "Te quiero" y "Te amo mucho" */
+        .texto-exterior {
+            position: absolute;
+            top: 170px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 5;
+            transition: opacity 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 100%;
+        }
+
+        .corazon {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background: var(--color-corazon);
+            z-index: 5;
+            clip-path: path('M20 36.2l-1.93-1.76C7.2 24.24 0 17.7 0 9.67 0 4.25 4.25 0 9.67 0c3.05 0 5.97 1.42 7.88 3.66C19.46 1.42 22.38 0 25.44 0 30.86 0 35.1 4.25 35.1 9.67c0 8.04-7.2 14.57-18.07 24.85L20 36.2z');
+            transition: opacity 0.3s;
+        }
+
+        /* Animaciones */
+        .contenedor-sobre:hover .tapa {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .contenedor-sobre:hover .carta {
+            transform: translateY(-180px); /* Sube lo justo para mostrar el papel completo */
+            z-index: 3;
+        }
+
+        .contenedor-sobre:hover .corazon, 
+        .contenedor-sobre:hover .texto-exterior {
+            opacity: 0;
+        }
+
+        .sobre::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: calc(var(--ancho-sobre) / 2) solid #e57373;
+            border-top: 150px solid transparent;
+            z-index: 3;
+        }
+
+        .sobre::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: calc(var(--ancho-sobre) / 2) solid #ef9a9a;
+            border-top: 150px solid transparent;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-sobre">
+        <div class="tapa"></div>
+        <div class="corazon"></div>
+        <div class="texto-exterior">Te amo mucho</div>
+        <div class="sobre"></div>
+        <div class="carta">
+            <p>
+                <strong>Para mi niño bonito:</strong><br><br>
+                Mi amor ❤️, sé que estás cansado y estresado hoy. Solo paso a recordarte que te amo y que, a pesar de nuestras peleas, siempre estaré para cuidarte.<br><br>
+                Eres un hombre increíble y el mejor novio que podría tener. No olvides que siempre estoy para lo que necesites. ✨
+                
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
